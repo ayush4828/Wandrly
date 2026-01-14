@@ -18,28 +18,6 @@ async function main() {
   await mongoose.connect('mongodb://127.0.0.1:27017/wanderly');
 }
 
-// app.get("/",(req,res)=>{
-//     res.send("woking ")
-// })
-
-// app.get("/testlistings" , async (req,res)=>{
-//     const newListing = new Listing({
-//         title:"snow fall ",
-//         description : "it's a best place to visit",
-//         price:6000,
-//         location:"masoori",
-//         country:"India"
-
-//     })
-
-//     await newListing.save()
-
-//     res.send("successfully Work")
-
-// })
-
-
-
 //Index Route
 
 app.get("/listings" , async(req ,res)=>{
