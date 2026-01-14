@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderly</title>
+</head>
+<body>
+
+    <h1>Create new listing </h1>
+
+    <form action="/listings" method="post">
+        <input type="text" name="listing[title]" placeholder="Enter Title"><br><br>
+        <textarea name="description" id="listing[description]" placeholder="Enter Description"></textarea><br><br>
+         <input type="text" name="listing[image]" placeholder="Enter Image Url/Link"><br><br>
+          <input type="number" name="listing[price]" placeholder="Enter price"><br><br>
+           <input type="text" name="listing[location]" placeholder="Enter location"><br><br>
+            <input type="text" name="listing[country]" placeholder="Enter Country"><br><br>
+            <button>Add Listing</button>
+    </form>
+    
+</body>
+</html>
