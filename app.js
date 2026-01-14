@@ -38,10 +38,16 @@ async function main() {
 
 // })
 
+
+
+//Index Route
+
 app.get("/listings" , async(req ,res)=>{
     const allListings = await Listing.find({});
     res.render("listings/index.ejs" , {allListings});
 })
+
+
 app.listen(8080,()=>{
     console.log("server is listning on 8080")
 })
