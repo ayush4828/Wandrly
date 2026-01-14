@@ -18,24 +18,29 @@ async function main() {
   await mongoose.connect('mongodb://127.0.0.1:27017/wanderly');
 }
 
-app.get("/",(req,res)=>{
-    res.send("woking ")
-})
+// app.get("/",(req,res)=>{
+//     res.send("woking ")
+// })
 
-app.get("/testlistings" , async (req,res)=>{
-    const newListing = new Listing({
-        title:"snow fall ",
-        description : "it's a best place to visit",
-        price:6000,
-        location:"masoori",
-        country:"India"
+// app.get("/testlistings" , async (req,res)=>{
+//     const newListing = new Listing({
+//         title:"snow fall ",
+//         description : "it's a best place to visit",
+//         price:6000,
+//         location:"masoori",
+//         country:"India"
 
-    })
+//     })
 
-    await newListing.save()
+//     await newListing.save()
 
-    res.send("successfully Work")
+//     res.send("successfully Work")
 
+// })
+
+app.get("/listings" , async(req ,res)=>{
+    const allListings = await Listing.find({});
+    res.render("listings/index.ejs" , {allListings});
 })
 app.listen(8080,()=>{
     console.log("server is listning on 8080")
