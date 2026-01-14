@@ -15,7 +15,7 @@ app.use(methodOverride('_method'))
 main().then((res)=>{console.log("connection successful")}).catch(err => console.log(err));
 
 async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/Wandrly');
+  await mongoose.connect('mongodb://127.0.0.1:27017/wanderly');
 }
 
 app.get("/",(req,res)=>{
