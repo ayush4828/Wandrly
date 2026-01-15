@@ -57,7 +57,15 @@ app.get("/listings/:id/edit" , async (req,res)=>{
    res.render("listings/edit.ejs" , {listing});
 })
 
-
+//update route
+app.put("/listings/:id" , async (req,res)=>{
+    let {id} = req.params;
+    let listing = req.body.listing;
+   await Listing.findByIdAndUpdate(id , listing);
+     // destructing way
+   //    await Listing.findByIdAndUpdate(id , {...req.body.listing});
+   res.redirect(`/listings/${id}`);
+})
 
 app.listen(8080,()=>{
     console.log("server is listning on 8080")
