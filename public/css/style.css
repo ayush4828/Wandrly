@@ -1,3 +1,80 @@
-body{
-    background-color: skyblue;
+.fa-plane-departure{
+    color: #fe434d;
+    font-size: 2rem;
+}
+.navbar{
+    height: 5rem;
+    background-color: white;
+}
+
+.nav-link{
+   color : #222222 !important;
+}
+/* Base link */
+.plane-anim {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 10px;
+}
+
+/* Flight container */
+.flight {
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  width: 100%;
+  height: 10px;
+  pointer-events: none;
+}
+
+/* Red trail line */
+.trail {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 2px;
+  width: 0;
+  background-color: #fe4e4d;
+  transform: translateY(-50%);
+}
+
+/* Plane */
+.plane {
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fe4e4d;
+  font-size: 14px;
+  opacity: 0;
+}
+
+/* Hover animation */
+.plane-anim:hover .plane {
+  opacity: 1;
+  animation: fly-plane 0.8s ease-in-out forwards;
+}
+
+.plane-anim:hover .trail {
+  animation: fly-trail 0.8s ease-in-out forwards;
+}
+
+/* Plane animation */
+@keyframes fly-plane {
+  from {
+    left: -20px;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+/* Trail animation */
+@keyframes fly-trail {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
 }

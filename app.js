@@ -19,6 +19,12 @@ async function main() {
   await mongoose.connect('mongodb://127.0.0.1:27017/wanderly');
 }
 
+// root route
+
+app.get("/" , (req,res)=>{
+    res.send("root route")
+})
+
 //Index Route
 
 app.get("/listings" , async(req ,res)=>{
