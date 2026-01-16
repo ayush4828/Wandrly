@@ -3,14 +3,22 @@
 <body>
 
     <h1>All Listings</h1> <br>
+     
+      <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+        <%for(listing of allListings){ %>
+<a href="/listings/<%=listing._id%>" class="listing-link">
+        <div class="card col" style="width: 18rem;">
+  <img src="<%=listing.image%>" class="card-img-top" alt="listing image" style="height: 18rem;">
 
-<ul>
-    <%for(listing of allListings){ %>
-        <li>
-           <a href="/listings/<%=listing._id%>"><%=listing.title%></a> 
+  <div class="card-img-overlay"> <i class="fa-regular fa-heart"></i> </div>
+  <div class="card-body">
+    <h5 class="card-title"><b><%=listing.title%></b></h5>
+    <p class="card-text"><%=listing.price.toLocaleString("en-IN")%>/Night</p>
+  </div>
+</div>
             
-        </li>
-    <%}%>
+</a> 
+      <%}%>
+      </div>
 
-    </ul>
 </body>

@@ -1,7 +1,13 @@
+
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body{
+    font-family:"Plus Jakarta Sans", sans-serif !important;
 }
 
 .fa-plane-departure{
@@ -125,3 +131,41 @@ footer a:hover {
     margin-left: 1rem;
     
 }
+
+.card{
+    border: none !important;
+    margin-bottom: 2rem 
+}
+.card-img-top{
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+.card-body{
+    padding: 0 !important;
+}
+
+.card-body h5 , p{
+    font-size: 1rem !important;
+}
+
+.listing-link{
+  text-decoration: none !important;
+}
+
+
+.card-img-overlay{
+    opacity: 0;
+}
+
+.card-img-overlay:hover{
+    opacity: 0.2;
+    background-color: white;
+
+}
+
+ .fa-heart{
+    font-size: 2rem;
+ 
+   
+ }
