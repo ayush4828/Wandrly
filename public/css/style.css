@@ -1,3 +1,9 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .fa-plane-departure{
     color: #fe434d;
     font-size: 2rem;
@@ -77,4 +83,45 @@
   to {
     width: 100%;
   }
+}
+
+footer a{
+
+    text-decoration: none;
+    color: #222222;
+
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+.f-info{
+    display: flex;
+    height: 6rem;
+    background-color: #ebebeb;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.left{
+    display: flex;
+}
+.copyr{
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.f-info-link{
+    margin-right: 1rem;
+    
+}
+
+.f-info-socials{
+    margin-right: 2rem;
+    font-size: 1.2rem;
+}
+
+.f-info-socials a {
+    margin-left: 1rem;
+    
 }
