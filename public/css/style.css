@@ -26,6 +26,9 @@ body{
     background-color: #fe434d !important;
   border: none !important;
 }
+.btns{
+  display: flex;
+}
 
 .fa-plane-departure{
     color: #fe434d;
