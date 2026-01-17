@@ -8,6 +8,23 @@
 
 body{
     font-family:"Plus Jakarta Sans", sans-serif !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+}
+
+.container{
+  flex : 1;
+}
+
+.add-btn{
+  background-color: #fe434d !important;
+  border: none !important;
+}
+.edit-btn{
+    background-color: #fe434d !important;
+  border: none !important;
 }
 
 .fa-plane-departure{
