@@ -4,7 +4,8 @@ const mongoose = require("mongoose");
 const path = require("path");
 const methodOverride = require('method-override');
 const Listing = require("./models/listing.js")
-const ejsMate = require("ejs-mate")
+const ejsMate = require("ejs-mate");
+const wrapAsync = require("./utils/wrapAsync.js");
 
 app.set("views" , path.join(__dirname,"views"))
 app.set("view engine" , "ejs")
@@ -39,7 +40,7 @@ res.render("listings/new.ejs");
 
 //create Route
 
-app.post("/listings" , async (req,res)=>{
+app.post("/listings" , wrapAsync(async (req,res)=>{
     // let {title,description,price,location,country} = req.body;
     // let listing = new Listing({title:title, description:description,image:image,price:price,location:location,country:country})
     //await listing.save()
@@ -48,7 +49,7 @@ app.post("/listings" , async (req,res)=>{
     const newListing = new Listing(listing);
     await newListing.save()
     res.redirect("/listings");
-})
+}))
 
 //Show Route
 app.get("/listings/:id" , async (req,res)=>{
@@ -82,6 +83,9 @@ app.delete("/listings/:id" , async (req,res)=>{
     res.redirect("/listings");
 })
 
+app.use((err,req,res,next)=>{
+    res.send("something went wrong")
+})
 app.listen(8080,()=>{
     console.log("server is listning on 8080")
 })
