@@ -22,6 +22,17 @@ async function main() {
   await mongoose.connect('mongodb://127.0.0.1:27017/wanderly');
 }
 
+const validateSchema = (req,res,next)=>{
+let {error} = listingSchema.validate(req.body);
+  if(error){
+    let errmsg = error.details.map((el)=>el.message).join(",")
+    throw new ExpressError(400,errmsg)
+  }
+  else{
+    next();
+  }
+}
+
 // root route
 
 app.get("/" , (req,res)=>{
@@ -42,17 +53,12 @@ res.render("listings/new.ejs");
 
 //create Route
 
-app.post("/listings" , wrapAsync(async (req,res)=>{
+app.post("/listings", validateSchema , wrapAsync(async (req,res)=>{
     // let {title,description,price,location,country} = req.body;
     // let listing = new Listing({title:title, description:description,image:image,price:price,location:location,country:country})
     //await listing.save()
 
     let listing = req.body.listing;
-    
-  let result = listingSchema.validate(req.body);
-  if(result.error){
-    throw new ExpressError(400,result.error)
-  }
     // console.log(listing);
     const newListing = new Listing(listing);
     await newListing.save()
@@ -66,7 +72,7 @@ app.get("/listings/:id" , wrapAsync(async (req,res)=>{
     res.render("listings/show.ejs", {listing})
 }))
 //edit route
-app.get("/listings/:id/edit" , wrapAsync(async (req,res)=>{
+app.get("/listings/:id/edit", validateSchema , wrapAsync(async (req,res)=>{
     let {id} = req.params;
    const listing =  await Listing.findById(id);
    res.render("listings/edit.ejs" , {listing});
