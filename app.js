@@ -7,6 +7,7 @@ const Listing = require("./models/listing.js")
 const ejsMate = require("ejs-mate");
 const wrapAsync = require("./utils/wrapAsync.js");
 const ExpressError = require("./utils/ExpressError.js");
+const { listingSchema } = require("./schema.js");
 
 app.set("views" , path.join(__dirname,"views"))
 app.set("view engine" , "ejs")
@@ -48,9 +49,10 @@ app.post("/listings" , wrapAsync(async (req,res)=>{
 
     let listing = req.body.listing;
     
-    if(!req.body.listing){
-        throw new ExpressError(400,"send Valid data")
-    }
+  let result = listingSchema.validate(req.body);
+  if(result.error){
+    throw new ExpressError(400,result.error)
+  }
     // console.log(listing);
     const newListing = new Listing(listing);
     await newListing.save()
