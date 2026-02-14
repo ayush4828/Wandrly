@@ -189,3 +189,8 @@ footer a:hover {
  
    
  }
+
+ .reviews{
+  border: 1px solid rgba(61, 61, 61, 0.448) !important;
+   border-radius: 0.8rem !important;
+ }
