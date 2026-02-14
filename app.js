@@ -53,7 +53,7 @@ res.render("listings/new.ejs");
 
 //create Route
 
-app.post("/listings", validateSchema , wrapAsync(async (req,res)=>{
+app.post("/listings" , wrapAsync(async (req,res)=>{
     // let {title,description,price,location,country} = req.body;
     // let listing = new Listing({title:title, description:description,image:image,price:price,location:location,country:country})
     //await listing.save()
@@ -72,7 +72,7 @@ app.get("/listings/:id" , wrapAsync(async (req,res)=>{
     res.render("listings/show.ejs", {listing})
 }))
 //edit route
-app.get("/listings/:id/edit", validateSchema , wrapAsync(async (req,res)=>{
+app.get("/listings/:id/edit" , wrapAsync(async (req,res)=>{
     let {id} = req.params;
    const listing =  await Listing.findById(id);
    res.render("listings/edit.ejs" , {listing});
