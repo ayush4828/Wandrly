@@ -85,7 +85,7 @@ app.post("/listings" , wrapAsync(async (req,res)=>{
 //Show Route
 app.get("/listings/:id" , wrapAsync(async (req,res)=>{
     let {id} = req.params;
-    const listing = await Listing.findById(id);
+    const listing = await Listing.findById(id).populate("reviews");
     res.render("listings/show.ejs", {listing})
 }))
 //edit route
@@ -129,7 +129,7 @@ app.post("/listings/:id/reviews"  , validateReview  ,  wrapAsync(async(req,res)=
     await listing.save();
     await newReview.save();
 
-    res.send("new review added ");
+   res.redirect(`/listings/${id}`);
 }))
 
 
