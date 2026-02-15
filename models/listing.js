@@ -39,5 +39,5 @@ if(listing){
    await Review.deleteMany({_id : {$in : listing.reviews}})
 }
 })
-
 module.exports = mongoose.model("Listing", listingSchema);
+
