@@ -5,6 +5,7 @@ const path = require("path");
 const methodOverride = require('method-override');
 const ejsMate = require("ejs-mate"); 
 const ExpressError = require("./utils/ExpressError.js");
+const Session = require("express-session")
 
 const listings = require("./routes/listing.js")
 const reviews = require("./routes/review.js");
@@ -24,8 +25,17 @@ async function main() {
 
 
 
+const sessionOptions = {secret:"mysupersecretcodestring" , resave:false , saveUninitialized:true}
+
+app.use(Session(sessionOptions))
+
+
 // root route
 app.get("/" , (req,res)=>{
+    res.send("root route")
+})
+
+app.get("/loop" , (req,res)=>{
     res.send("root route")
 })
 
