@@ -35,11 +35,6 @@ app.get("/" , (req,res)=>{
     res.send("root route")
 })
 
-app.get("/loop" , (req,res)=>{
-    res.send("root route")
-})
-
-
 app.use("/listings",listings);
 app.use("/listings/:id/reviews",reviews)
 
