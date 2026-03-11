@@ -6,6 +6,7 @@ const methodOverride = require('method-override');
 const ejsMate = require("ejs-mate"); 
 const ExpressError = require("./utils/ExpressError.js");
 const Session = require("express-session")
+const flash = require("connect-flash")
 
 const listings = require("./routes/listing.js")
 const reviews = require("./routes/review.js");
@@ -25,6 +26,12 @@ async function main() {
 
 
 
+// root route
+app.get("/" , (req,res)=>{
+    res.send("root route")
+})
+
+
 const sessionOptions = {secret:"mysupersecretcodestring" , 
     resave:false ,
      saveUninitialized:true ,
@@ -35,12 +42,13 @@ const sessionOptions = {secret:"mysupersecretcodestring" ,
 
     }}
 
+
 app.use(Session(sessionOptions))
+app.use(flash())
 
-
-// root route
-app.get("/" , (req,res)=>{
-    res.send("root route")
+app.use((req,res,next)=>{
+    res.locals.success = req.flash("success");
+    next()
 })
 
 app.use("/listings",listings);
