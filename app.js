@@ -25,7 +25,15 @@ async function main() {
 
 
 
-const sessionOptions = {secret:"mysupersecretcodestring" , resave:false , saveUninitialized:true}
+const sessionOptions = {secret:"mysupersecretcodestring" , 
+    resave:false ,
+     saveUninitialized:true ,
+    cookie:{
+        expires : Date.now() + 14*24*60*60*1000,
+        maxAge : 14*24*60*60*1000,
+        httpOnly:true 
+
+    }}
 
 app.use(Session(sessionOptions))
 
