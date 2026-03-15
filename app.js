@@ -7,7 +7,9 @@ const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
 const Session = require("express-session")
 const flash = require("connect-flash")
+
 const passport = require("passport")
+const LocalStrategy = require("passport-local");
 const User = require("./models/user.js")
 
 
@@ -61,6 +63,18 @@ app.use((req,res,next)=>{
     res.locals.success = req.flash("success");
     res.locals.error = req.flash("error");
     next()
+})
+
+app.get("/Demouser",async (req,res)=>{
+
+    let demoUser1 = new User({
+        email:"ayush123@gmail.com",
+        username:"ayush123"
+    })
+
+   const fakeuser = await User.register(demoUser1,"ayush@2020");
+   res.send(fakeuser)
+
 })
 
 app.use("/listings",listings);
