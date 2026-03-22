@@ -47,8 +47,8 @@ module.exports.createForm = async (req,res)=>{
     // let {title,description,price,location,country} = req.body;
     // let listing = new Listing({title:title, description:description,image:image,price:price,location:location,country:country})
     //await listing.save()
-    let url = req.file.path;
-    let filename = req.file.filename;
+    let url = req.file.path || req.file.secure_url || req.file.url;
+    let filename = req.file.filename || req.file.public_id;
 
     let listing = req.body.listing;
     // console.log(listing);
@@ -105,8 +105,8 @@ module.exports.updateListing = async (req,res)=>{
 
 
  if(typeof req.file !== "undefined"){
-    let url = req.file.path;
-    let filename = req.file.filename;
+    let url = req.file.path || req.file.secure_url || req.file.url;
+    let filename = req.file.filename || req.file.public_id;
     listing1.image = {url,filename}
 
     await listing1.save();

@@ -1,30 +1,51 @@
+<style>
+  .flash-alert {
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    min-width: 320px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border: none;
+    border-radius: 12px;
+    animation: slideDown 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  }
+  @keyframes slideDown {
+    from { top: -50px; opacity: 0; transform: translateX(-50%) scale(0.9); }
+    to { top: 90px; opacity: 1; transform: translateX(-50%) scale(1); }
+  }
+</style>
+
 <% if(success && success.length){ %>
-    <div class="alert alert-success alert-dismissible fade show col-6 offset-3" role="alert">
-<%= success %>
-
-<button
-type="button"
-class="btn-close"
-data-bs-dismiss="alert"
-aria-label="Close"
-></button>
-
-</div>
-<%  } %>
-
+  <div class="alert alert-success alert-dismissible fade show flash-alert" role="alert" id="success-alert" style="background-color: #e8f5e9; color: #2e7d32; border-left: 5px solid #4caf50;">
+    <i class="fa-solid fa-circle-check me-2"></i> <strong><%= success %></strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  <script>
+    setTimeout(() => {
+      let alertEl = document.getElementById('success-alert');
+      if (alertEl) {
+        let bsAlert = new bootstrap.Alert(alertEl);
+        bsAlert.close();
+      }
+    }, 3500);
+  </script>
+<% } %>
 
 <% if(error && error.length){ %>
-    <div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
-<%= error %>
-
-<button
-type="button"
-class="btn-close"
-data-bs-dismiss="alert"
-aria-label="Close"
-></button>
-
-</div>
-<%  } %>
-
-
+  <div class="alert alert-danger alert-dismissible fade show flash-alert" role="alert" id="error-alert" style="background-color: #ffebee; color: #c62828; border-left: 5px solid #f44336;">
+    <i class="fa-solid fa-circle-exclamation me-2"></i> <strong><%= error %></strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  <script>
+    setTimeout(() => {
+      let alertEl = document.getElementById('error-alert');
+      if (alertEl) {
+        let bsAlert = new bootstrap.Alert(alertEl);
+        bsAlert.close();
+      }
+    }, 4500);
+  </script>
+<% } %>

@@ -281,16 +281,16 @@
   <h1 class="listing-title"><%= listing.title %></h1>
 
   <!-- Hero Image -->
-  <img src="<%= listing.image.url %>" class="listing-hero-img" alt="<%= listing.title %>">
+  <img src="<%= listing.image?.url || 'https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60' %>" class="listing-hero-img" alt="<%= listing.title %>">
 
     <!--Username-->
   <div class="host-bar">
   <div class="host-avatar">
-    <%= listing.owner.username.charAt(0).toUpperCase() %>
+    <%= listing.owner?.username?.charAt(0)?.toUpperCase() || 'A' %>
   </div>
   <div class="host-info">
     <span class="host-label">Hosted by</span>
-    <span class="host-name"><%= listing.owner.username %></span>
+    <span class="host-name"><%= listing.owner?.username || "Anonymous" %></span>
   </div>
 </div>
   <!-- Meta Badges -->
@@ -309,7 +309,7 @@
 
   <!-- Action Buttons -->
 
-<%if(currUser && currUser._id.equals(listing.owner._id)){%>
+<%if(currUser && listing.owner && currUser._id.equals(listing.owner._id)){%>
   <div class="action-btns">
     <a href="/listings/<%= listing._id %>/edit" class="btn-edit">✏️ Edit</a>
     <form method="post" action="/listings/<%= listing._id %>?_method=DELETE" style="margin:0;">

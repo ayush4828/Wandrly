@@ -247,7 +247,7 @@
       <a href="/listings/<%= listing._id %>" class="listing-link">
         <div class="listing-card">
           <div class="img-wrapper">
-            <img src="<%= listing.image.url %>" class="card-img-top" alt="listing image">
+            <img src="<%= listing.image.url || 'https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60' %>" class="card-img-top" alt="listing image">
             <!-- <button class="heart-btn" onclick="event.preventDefault()">
               <i class="fa-regular fa-heart"></i>
             </button> -->

@@ -10,6 +10,7 @@ const methodOverride = require('method-override');
 const ejsMate = require("ejs-mate"); 
 const ExpressError = require("./utils/ExpressError.js");
 const Session = require("express-session")
+const { MongoStore } = require('connect-mongo');
 const flash = require("connect-flash")
 
 const passport = require("passport")
@@ -27,19 +28,28 @@ app.use(express.static(path.join(__dirname , "/public")))
 app.use(express.urlencoded({ extended:true }))
 app.use(methodOverride('_method'))
 app.engine('ejs', ejsMate);
-
+const dbUrl=process.env.ATLASDB_URL
 main().then((res)=>{console.log("connection successful")}).catch(err => console.log(err));
 
 async function main() {
-  await mongoose.connect(process.env.MONGO_URL || 'mongodb://127.0.0.1:27017/wanderly');
+  await mongoose.connect(dbUrl);
 }
 
 
+const store = MongoStore.create({
+mongoUrl:dbUrl,
+    crypto:{
+        secret:"mysupersecret"
+    },
+    touchAfter:24*3600
+})
+
+store.on("error" , (err)=>{
+    console.log("error in mongo store " , err)
+})
 
 
-
-
-const sessionOptions = {secret:process.env.SESSION_SECRET || "mysupersecretcodestring" , 
+const sessionOptions = {secret:process.env.SESSION_SECRET, store,
     resave:false ,
      saveUninitialized:true ,
     cookie:{
@@ -87,6 +97,6 @@ app.use((err,req,res,next)=>{
     let { statusCode = 500 , message = "something went wrong" } = err; 
     res.status(statusCode).render("error.ejs",{message})
 })
-app.listen(8080,()=>{
-    console.log("server is listning on 8080")
+app.listen(8085,()=>{
+    console.log("server is listning on 8085")
 })
