@@ -161,25 +161,87 @@
   }
 
 
-  /* ── Mobile: horizontal scroll ── */
+  /* ── Tablet (≤ 992px) ── */
+  @media (max-width: 992px) {
+    .listings-container {
+      padding: 20px 24px;
+    }
+    .listings-grid {
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    #filters-bar {
+      padding: 0 1.5rem;
+    }
+  }
+
+  /* ── Mobile (≤ 768px) ── */
   @media (max-width: 768px) {
     #filters-bar {
+      flex-direction: column;
+      align-items: stretch;
       padding: 0 1rem;
+      gap: 0.75rem;
     }
     #filters {
-      margin-left: 1rem;
+      margin-left: 0;
       flex-wrap: nowrap;
       overflow-x: auto;
       padding-bottom: 8px;
       -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;          /* Firefox */
+      scrollbar-width: none;
     }
     #filters::-webkit-scrollbar {
-      display: none;                  /* Chrome / Safari */
+      display: none;
     }
     .filter {
-      margin-right: 1.4rem;
-      margin-top: 1.2rem;
+      margin-right: 1.2rem;
+      margin-top: 1rem;
+    }
+    .tax-toggle {
+      margin-left: 0;
+      justify-content: center;
+      border-radius: 0.75rem;
+      padding: 0.75rem;
+    }
+    .listings-container {
+      padding: 16px 12px;
+    }
+    .listings-grid {
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 18px;
+    }
+    .listing-card .card-img-top {
+      height: 200px;
+    }
+  }
+
+  /* ── Small phones (≤ 480px) ── */
+  @media (max-width: 480px) {
+    .listings-container {
+      padding: 12px 8px;
+    }
+    .listings-container h1 {
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+    }
+    .listings-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .listing-card .card-img-top {
+      height: 220px;
+    }
+    .filter {
+      margin-right: 1rem;
+      margin-top: 0.8rem;
+    }
+    .filter p {
+      font-size: 0.7rem !important;
+    }
+    .tax-toggle {
+      font-size: 0.85rem;
+      padding: 0.6rem;
     }
   }
 </style>

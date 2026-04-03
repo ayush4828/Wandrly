@@ -271,6 +271,173 @@
   color: #222;
   text-transform: capitalize;
 }
+
+/* ═══ Show Page Responsive ═══ */
+
+/* ── Tablet (≤ 768px) ── */
+@media (max-width: 768px) {
+  .show-container {
+    margin: 24px auto;
+    padding: 0 16px;
+  }
+
+  .listing-title {
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+  }
+
+  .listing-hero-img {
+    height: 300px;
+    border-radius: 12px;
+    margin-bottom: 18px;
+  }
+
+  .listing-meta {
+    gap: 8px;
+  }
+
+  .meta-badge {
+    padding: 5px 12px;
+    font-size: 0.85rem;
+  }
+
+  .listing-price {
+    font-size: 1.3rem;
+  }
+
+  .action-btns {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .btn-edit, .btn-delete {
+    padding: 9px 22px;
+    font-size: 0.9rem;
+  }
+
+  .reviews-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+  }
+
+  .review-form-card {
+    padding: 20px;
+  }
+
+  .host-bar {
+    padding: 14px 16px;
+    gap: 12px;
+  }
+
+  .host-avatar {
+    width: 42px;
+    height: 42px;
+    font-size: 1.1rem;
+  }
+
+  #map {
+    height: 300px !important;
+    border-radius: 10px !important;
+  }
+}
+
+/* ── Small phones (≤ 480px) ── */
+@media (max-width: 480px) {
+  .show-container {
+    margin: 16px auto;
+    padding: 0 10px;
+  }
+
+  .listing-title {
+    font-size: 1.35rem;
+    margin-bottom: 10px;
+  }
+
+  .listing-hero-img {
+    height: 220px;
+    border-radius: 10px;
+    margin-bottom: 14px;
+  }
+
+  .listing-meta {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .listing-price {
+    font-size: 1.15rem;
+    margin-bottom: 14px;
+  }
+
+  .listing-description {
+    font-size: 0.92rem;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+  }
+
+  .action-btns {
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+
+  .btn-edit, .btn-delete {
+    width: 100%;
+    text-align: center;
+    padding: 12px 20px;
+  }
+
+  .section-title {
+    font-size: 1.15rem;
+    margin-bottom: 14px;
+  }
+
+  .review-form-card {
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+  }
+
+  .reviews-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .review-card {
+    padding: 16px;
+    border-radius: 10px;
+  }
+
+  .host-bar {
+    padding: 12px 14px;
+    gap: 10px;
+    border-radius: 10px;
+  }
+
+  .host-avatar {
+    width: 38px;
+    height: 38px;
+    font-size: 1rem;
+  }
+
+  .host-label {
+    font-size: 0.72rem;
+  }
+
+  .host-name {
+    font-size: 0.9rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  #map {
+    height: 250px !important;
+    border-radius: 8px !important;
+    margin-top: 14px !important;
+  }
+}
 </style>
 
 <div class="show-container">
